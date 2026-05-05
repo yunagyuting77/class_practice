@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>教練資歷 - 跑班訓練營</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var index = 0;
+        var img = new Array("Fengjia.jpg", "Yizhong.jpg", "Tunghai.jpg");
+        var title = new Array("逢甲夜市", "一中夜市", "東海夜市");
+        var info = new Array("位在逢甲大學前的觀光夜市，假日時節常常吸引大批人潮。", "位於台中一中與台中科技大學之間的街道。", "位在東海大學旁的夜市，由於鄰近台灣大道使得人潮從不間斷。");
+
+        function toHTML(index) {
+            var hm = "<img src='images/" + img[index] + "' width='125' style='float:left;margin:10px;'>";
+            hm += "<h3>" + title[index] + "</h3>";
+            hm += "<p>" + info[index] + "</p>";
+            return hm;
+        }
+        $(document).ready(function () {
+            $("#div_cont").html(toHTML(index));
+        });
+
+        function fnNext() {
+
+            index++;
+            if (index >= img.length) {
+                index = 0;
+            }
+
+            $("#div_cont").html(toHTML(index));
+            console.log('$("#div_cont").html() : ' + $("#div_cont").html());
+            console.log('$("#div_cont").text() : ' + $("#div_cont").text());
+        }
+    </script>
 </head>
+
+
 <body>
     <nav>
         <div class="container"><a href="index.html" class="logo">跑跑訓練營</a>
-<ul>
-    <li><a href="index.html">回到首頁</a></li>
-    <li><a href="about.html" class="active">教練資歷</a></li>
-    <li><a href="courses.html">課程簡介</a></li>
-    <li><a href="tools.html">配速工具</a></li>
-    <li><a href="testimonials.html">學員見證</a></li>
-</ul>
+            <ul>
+                <li><a href="index.html">回到首頁</a></li>
+                <li><a href="about.html" class="active">教練資歷</a></li>
+                <li><a href="courses.html">課程簡介</a></li>
+                <li><a href="tools.html">配速工具</a></li>
+                <li><a href="testimonials.html">學員見證</a></li>
+            </ul>
         </div>
     </nav>
     <section class="container">
@@ -34,7 +67,21 @@
                 <p>✅ 世界田徑總會教練認證</p>
                 <p>✅ 紅十字會急救員證照</p>
             </div>
+
+
         </div>
+<div id="div_cont" style="border-style:solid; border-width:1px; min-height:150px; padding:10px;">
+    </div>
+<p>
+        <input type="button" onclick="fnNext();" value="下一篇">
+    </p>
+
     </section>
+
+
+
+
+
 </body>
+
 </html>
